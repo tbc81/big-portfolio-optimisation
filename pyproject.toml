@@ -1,0 +1,59 @@
+[build-system] # Creates a table containing 2 keys
+requires = ["setuptools>=77"] # List of dependencies required to build the project
+build-backend = "setuptools.build_meta"
+# Build-backend is a library turning project source code into distributable package files.
+
+[project]
+name = "big-portfolio-optimisation"
+version = "0.1.0"
+description = "Multi-asset portfolio optimisation and risk analysis using MOSEK Fusion API."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.9",
+    "mosek>=11.0",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "PyYAML>=6.0",
+    "requests>=2.32",
+    "yfinance>=0.2.50",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.12",
+]
+
+[project.scripts]
+big-portfolio = "big_portfolio.cli:main"
+# big-portfolio command available which is an executable script
+
+[tool.setuptools.packages.find] # Enforces src layout for package builders
+where = ["src"]
+# setuptools scans exclusively in src/ folder when packaging python modules into distribtuion
+#  archives, preventing auxiliary folders e.g. tests/ or data/ from being bundled in.
+
+[tool.ruff] # Formatter config
+line-length = 88
+target-version = "py312"
+src = ["src", "tests"]
+# Ruff uses this list to distinguish between internal modules and external third party packages
+
+[tool.ruff.lint]    # Linting rules: activate specific rules inside Ruff static analysis tool
+select = [
+    "E",            # Enforces PEP 8 style req
+    "F",            # Catches functional code defects
+    "I",            # Standardises import order
+    "B",            # Detects design bugs e.g. mutable default arguments in functions
+    "UP",           # Auto upgrades older Python syntax into modern conventions
+]
+
+[tool.ruff.format] # Code formatting
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]   # Test execution settings
+testpaths = ["tests"]       # pytest strictly discovers files in test/ only
+addopts = "-ra"             # Appends command line arguments to every test run automatically
+# flag: "-ra" instructs pytest to display detailed summary report at end of execution

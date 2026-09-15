@@ -1,0 +1,128 @@
+portfolio:
+  name: "Bath Investors Group"
+  base_currency: "GBP"
+
+  estimation:
+    start_date: "2021-09-09"
+    end_date: "2026-09-09"
+    frequency: "W-FRI"
+    periods_per_year: 52
+
+  cash:
+    current_weight: 0.015
+    expected_return: 0.0
+
+  assets:
+    rheinmetall:
+      name: "Rheinmetall"
+      ticker: "RHM.DE"
+      currency: "EUR"
+      current_weight: 0.10
+
+    parkmead:
+      name: "Parkmead"
+      ticker: "PMG.L"
+      currency: "GBX"
+      current_weight: 0.10
+
+    asml:
+      name: "ASML"
+      ticker: "ASML.AS"
+      currency: "EUR"
+      current_weight: 0.10
+
+    roku:
+      name: "Roku"
+      ticker: "ROKU"
+      currency: "USD"
+      current_weight: 0.10
+
+    csh2:
+      name: "CSH2"
+      ticker: "CSH2.L"
+      currency: "GBX"
+      current_weight: 0.075
+
+    gold:
+      name: "Gold"
+      ticker: "PHGP.L"
+      currency: "GBX"
+      current_weight: 0.065
+
+    duke_energy:
+      name: "Duke Energy"
+      ticker: "DUK"
+      currency: "USD"
+      current_weight: 0.05
+
+    bae_systems:
+      name: "BAE Systems"
+      ticker: "BA.L"
+      currency: "GBX"
+      current_weight: 0.05
+
+    nucor:
+      name: "Nucor"
+      ticker: "NUE"
+      currency: "USD"
+      current_weight: 0.05
+
+    diageo:
+      name: "Diageo"
+      ticker: "DGE.L"
+      currency: "GBX"
+      current_weight: 0.05
+
+    legal_general:
+      name: "Legal & General"
+      ticker: "LGEN.L"
+      currency: "GBX"
+      current_weight: 0.05
+
+    apollo:
+      name: "Apollo"
+      ticker: "APO"
+      currency: "USD"
+      current_weight: 0.05
+
+    cocoa:
+      name: "Cocoa"
+      ticker: "COCO.L"
+      currency: "USD"
+      current_weight: 0.05
+
+    salesforce:
+      name: "Salesforce"
+      ticker: "CRM"
+      currency: "USD"
+      current_weight: 0.025
+
+    cameco:
+      name: "Cameco"
+      ticker: "CCO.TO"
+      currency: "CAD"
+      current_weight: 0.01
+
+    marvell:
+      name: "Marvell"
+      ticker: "MRVL"
+      currency: "USD"
+      current_weight: 0.025
+
+    micron:
+      name: "Micron"
+      ticker: "MU"
+      currency: "USD"
+      current_weight: 0.025
+
+    volatus_aerospace:
+      name: "Volatus Aerospace"
+      ticker: "FLT.TO"
+      currency: "CAD"
+      current_weight: 0.01
+
+  proxies:
+    csh2:
+      provider: "Bank of England"
+      series_code: "IUDZOS2"
+      apply_before_first_observation: true

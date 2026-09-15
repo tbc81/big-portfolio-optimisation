@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+
+# Test and tooling caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE and operating system
+.idea/
+.DS_Store
+
+# MOSEK licence
+mosek.lic
+**/mosek.lic
+
+# Generated market data
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+# Generated tables
+outputs/tables/*
+!outputs/tables/.gitkeep
+
+# Local reference implementation
+legacy/
