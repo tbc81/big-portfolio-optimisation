@@ -1,12 +1,23 @@
-[build-system] # Creates a table containing 2 keys
-requires = ["setuptools>=77"] # List of dependencies required to build the project
+[build-system]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
-# Build-backend is a library turning project source code into distributable package files.
 
 [project]
 name = "big-portfolio-optimisation"
 version = "0.1.0"
-description = "Multi-asset portfolio optimisation and risk analysis using MOSEK Fusion API."
+description = "Configuration-driven portfolio optimisation and risk analysis using MOSEK Fusion"
+authors = [
+    { name = "Tarun Chandramouli" },
+]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = [
+    "portfolio-optimisation",
+    "mosek",
+    "convex-optimisation",
+    "quantitative-finance",
+    "mean-variance",
+]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -26,34 +37,31 @@ dev = [
 ]
 
 [project.scripts]
-big-portfolio = "big_portfolio.cli:main"
-# big-portfolio command available which is an executable script
+portfolio-analytics = "big_portfolio.cli:main"
 
-[tool.setuptools.packages.find] # Enforces src layout for package builders
+# Restrict package discovery to the src layout
+[tool.setuptools.packages.find]
 where = ["src"]
-# setuptools scans exclusively in src/ folder when packaging python modules into distribtuion
-#  archives, preventing auxiliary folders e.g. tests/ or data/ from being bundled in.
 
-[tool.ruff] # Formatter config
+[tool.ruff]
 line-length = 88
-target-version = "py312"
-src = ["src", "tests"]
-# Ruff uses this list to distinguish between internal modules and external third party packages
 
-[tool.ruff.lint]    # Linting rules: activate specific rules inside Ruff static analysis tool
+[tool.ruff.lint]
 select = [
-    "E",            # Enforces PEP 8 style req
-    "F",            # Catches functional code defects
-    "I",            # Standardises import order
-    "B",            # Detects design bugs e.g. mutable default arguments in functions
-    "UP",           # Auto upgrades older Python syntax into modern conventions
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
 ]
 
-[tool.ruff.format] # Code formatting
+[tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 
-[tool.pytest.ini_options]   # Test execution settings
-testpaths = ["tests"]       # pytest strictly discovers files in test/ only
-addopts = "-ra"             # Appends command line arguments to every test run automatically
-# flag: "-ra" instructs pytest to display detailed summary report at end of execution
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "mosek: requires a working MOSEK licence",
+]

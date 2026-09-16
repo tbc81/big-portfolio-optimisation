@@ -19,20 +19,20 @@ htmlcov/
 .idea/
 .DS_Store
 
-# MOSEK licence
+# Local environment variables and licences
+.env
 mosek.lic
-**/mosek.lic
 
 # Generated market data
-data/raw/*
-!data/raw/.gitkeep
+/data/raw/*
+!/data/raw/.gitkeep
 
-data/processed/*
-!data/processed/.gitkeep
+/data/processed/*
+!/data/processed/.gitkeep
 
-# Generated tables
-outputs/tables/*
-!outputs/tables/.gitkeep
+# Generated analysis tables
+/outputs/tables/*
+!/outputs/tables/.gitkeep
 
 # Local reference implementation
-legacy/
+/legacy/

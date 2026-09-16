@@ -1,128 +1,187 @@
+# BIG case study configuration for the portfolio optimisation framework
+
 portfolio:
   name: "Bath Investors Group"
   base_currency: "GBP"
 
+  # Historical sample used to estimate portfolio risk and return
   estimation:
     start_date: "2021-09-09"
     end_date: "2026-09-09"
     frequency: "W-FRI"
     periods_per_year: 52
 
+  # Cash is currently treated as a zero-return, zero-volatility allocation
   cash:
-    current_weight: 0.015
     expected_return: 0.0
 
+  # Market-data universe shared across all portfolio snapshots
   assets:
     rheinmetall:
       name: "Rheinmetall"
       ticker: "RHM.DE"
       currency: "EUR"
-      current_weight: 0.10
 
     parkmead:
       name: "Parkmead"
       ticker: "PMG.L"
       currency: "GBX"
-      current_weight: 0.10
 
     asml:
       name: "ASML"
       ticker: "ASML.AS"
       currency: "EUR"
-      current_weight: 0.10
 
     roku:
       name: "Roku"
       ticker: "ROKU"
       currency: "USD"
-      current_weight: 0.10
 
     csh2:
       name: "CSH2"
       ticker: "CSH2.L"
       currency: "GBX"
-      current_weight: 0.075
 
     gold:
       name: "Gold"
       ticker: "PHGP.L"
       currency: "GBX"
-      current_weight: 0.065
 
     duke_energy:
       name: "Duke Energy"
       ticker: "DUK"
       currency: "USD"
-      current_weight: 0.05
 
     bae_systems:
       name: "BAE Systems"
       ticker: "BA.L"
       currency: "GBX"
-      current_weight: 0.05
 
     nucor:
       name: "Nucor"
       ticker: "NUE"
       currency: "USD"
-      current_weight: 0.05
 
     diageo:
       name: "Diageo"
       ticker: "DGE.L"
       currency: "GBX"
-      current_weight: 0.05
 
     legal_general:
       name: "Legal & General"
       ticker: "LGEN.L"
       currency: "GBX"
-      current_weight: 0.05
 
     apollo:
       name: "Apollo"
       ticker: "APO"
       currency: "USD"
-      current_weight: 0.05
 
     cocoa:
       name: "Cocoa"
       ticker: "COCO.L"
       currency: "USD"
-      current_weight: 0.05
 
     salesforce:
       name: "Salesforce"
       ticker: "CRM"
       currency: "USD"
-      current_weight: 0.025
 
     cameco:
       name: "Cameco"
       ticker: "CCO.TO"
       currency: "CAD"
-      current_weight: 0.01
 
     marvell:
       name: "Marvell"
       ticker: "MRVL"
       currency: "USD"
-      current_weight: 0.025
 
     micron:
       name: "Micron"
       ticker: "MU"
       currency: "USD"
-      current_weight: 0.025
 
     volatus_aerospace:
       name: "Volatus Aerospace"
       ticker: "FLT.TO"
       currency: "CAD"
-      current_weight: 0.01
 
+    amd:
+      name: "AMD"
+      ticker: "AMD"
+      currency: "USD"
+
+  # Holdings are stored independently from market-data definitions
+  portfolios:
+    current:
+      name: "Current BIG"
+      cash_weight: 0.015
+      weights:
+        rheinmetall: 0.10
+        parkmead: 0.10
+        asml: 0.10
+        roku: 0.10
+        csh2: 0.075
+        gold: 0.065
+        duke_energy: 0.05
+        bae_systems: 0.05
+        nucor: 0.05
+        diageo: 0.05
+        legal_general: 0.05
+        apollo: 0.05
+        cocoa: 0.05
+        salesforce: 0.025
+        cameco: 0.01
+        marvell: 0.025
+        micron: 0.025
+        volatus_aerospace: 0.01
+
+    pre_diversification:
+      name: "Pre-diversification BIG"
+      cash_weight: 0.0
+      weights:
+        rheinmetall: 0.10
+        parkmead: 0.10
+        asml: 0.10
+        roku: 0.10
+        gold: 0.065
+        amd: 0.05
+        marvell: 0.05
+        duke_energy: 0.05
+        bae_systems: 0.05
+        nucor: 0.05
+        diageo: 0.05
+        legal_general: 0.05
+        apollo: 0.05
+        cocoa: 0.05
+        salesforce: 0.025
+        cameco: 0.025
+        micron: 0.025
+        volatus_aerospace: 0.01
+
+  # Proxy series extend assets with insufficient observed price history
   proxies:
     csh2:
       provider: "Bank of England"
       series_code: "IUDZOS2"
       apply_before_first_observation: true
+
+  # Risk groups are independent of portfolio holdings and may overlap
+  correlation_stress:
+    groups:
+      technology_growth:
+        - asml
+        - roku
+        - salesforce
+        - marvell
+        - micron
+        - amd
+
+    # Hypothetical sensitivity levels
+    target_correlations:
+      - 0.60
+      - 0.70
+      - 0.80
+      - 0.85
+      - 0.90
