@@ -1,0 +1,34 @@
+site_name: BIG Portfolio Optimisation
+site_description: Portfolio optimisation and risk analysis using MOSEK Fusion
+site_url: https://tbc81.github.io/big-portfolio-optimisation/
+repo_url: https://github.com/tbc81/big-portfolio-optimisation
+repo_name: tbc81/big-portfolio-optimisation
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+
+nav:
+  - Overview: index.md
+  - Methodology:
+      - Data preparation: methodology/data.md
+      - Moment estimation: methodology/estimation.md
+      - Mean-variance optimisation: methodology/optimisation.md
+      - Correlation stress analysis: methodology/correlation-stress.md
+  - BIG case study: case-study/big-portfolio.md
+  - Development:
+      - Analytical roadmap: development/roadmap.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

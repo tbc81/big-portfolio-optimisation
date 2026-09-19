@@ -30,9 +30,9 @@ mosek.lic
 /data/processed/*
 !/data/processed/.gitkeep
 
-# Generated analysis tables
-/outputs/tables/*
-!/outputs/tables/.gitkeep
+# Generated analysis and documentation
+/outputs/
+/site/
 
 # Local reference implementation
 /legacy/
