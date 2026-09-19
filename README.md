@@ -28,7 +28,7 @@ The full methodology, mathematical derivations, case-study results, model limita
 - [BIG case study](docs/case-study/big-portfolio.md)
 - [Limitations and analytical roadmap](docs/development/roadmap.md)
 
-The documentation is also configured for publication with MkDocs Material through GitHub Pages.
+Full technical documentation is available on the [project website](https://tbc81.github.io/big-portfolio-optimisation/).
 
 ## Installation
 
